@@ -1,4 +1,4 @@
-project(SpaceInvaders CXX)
+ project(SpaceInvaders CXX)
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_STANDARD 17)
@@ -22,6 +22,10 @@ add_executable(invaders ${SOURCES})
 target_include_directories(invaders PRIVATE ${HEADERS_DIR} ${SFML_INCLUDE_DIRS})
 target_link_libraries(invaders sfml-graphics sfml-system sfml-audio ${SFML_DEPENDENCIES})
 
-# Copy resources to final executable location
-message(STATUS "Copying resource files to ${CMAKE_CURRENT_BINARY_DIR}")
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Source/Resources DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+if(CMAKE_GENERATOR MATCHES "Visual Studio") 
+    add_custom_command(TARGET invaders POST_BUILD
+                       COMMAND "${CMAKE_COMMAND}" -E copy "${CMAKE_CURRENT_SOURCE_DIR}/Source/Resources" "${CMAKE_BINARY_DIR}/$<CONFIGURATION>/")
+else()
+    add_custom_command(TARGET invaders POST_BUILD
+                       COMMAND "${CMAKE_COMMAND}" -E copy "${CMAKE_CURRENT_SOURCE_DIR}/Source/Resources" "${CMAKE_BINARY_DIR}/")
+endif()
