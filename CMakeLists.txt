@@ -1,4 +1,4 @@
- project(SpaceInvaders CXX)
+project(SpaceInvaders CXX)
 cmake_minimum_required(VERSION 3.10)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_CXX_STANDARD 17)
@@ -24,8 +24,8 @@ target_link_libraries(invaders sfml-graphics sfml-system sfml-audio ${SFML_DEPEN
 
 if(CMAKE_GENERATOR MATCHES "Visual Studio") 
     add_custom_command(TARGET invaders POST_BUILD
-                       COMMAND "${CMAKE_COMMAND}" -E copy "${CMAKE_CURRENT_SOURCE_DIR}/Source/Resources" "${CMAKE_BINARY_DIR}/$<CONFIGURATION>/")
+                       COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/Source/Resources" "${CMAKE_BINARY_DIR}/$<CONFIGURATION>/Resources")
 else()
     add_custom_command(TARGET invaders POST_BUILD
-                       COMMAND "${CMAKE_COMMAND}" -E copy "${CMAKE_CURRENT_SOURCE_DIR}/Source/Resources" "${CMAKE_BINARY_DIR}/")
+                       COMMAND "${CMAKE_COMMAND}" -E copy_directory "${CMAKE_SOURCE_DIR}/Source/Resources" "${CMAKE_BINARY_DIR}/Resources")
 endif()
