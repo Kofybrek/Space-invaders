@@ -15,7 +15,7 @@ Here's the video explaining how I did it: https://youtu.be/WfYNelQiQvc
         
         In the root folder:
         ```
-        make build && cd build
+        mkdir build && cd build
         cmake ..
         make
         ```
