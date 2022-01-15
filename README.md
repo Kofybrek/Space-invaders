@@ -12,7 +12,8 @@ Here's the video explaining how I did it: https://youtu.be/WfYNelQiQvc
         * *Debian/Ubuntu*: `sudo apt-get install libsfml-dev`
         * *Arch Linux and derivatives*: `sudo pacman -S sfml`
     2) Compile the project:
-    In the root folder:
+        
+        In the root folder:
         ```
         make build && cd build
         cmake ..
