@@ -1,6 +1,8 @@
 //SO MANY CONSTANTS! AAAAAAAH!
 #pragma once
 
+#include <cmath>
+
 //I didn't wanna make PLAYER_SIZE, ENEMY_SIZE, BULLET_SIZE, so I just defined the base size.
 constexpr unsigned char BASE_SIZE = 16;
 constexpr unsigned char ENEMY_BULLET_SPEED = 2;
